@@ -1165,7 +1165,7 @@ export const calculateHepteractMultiplier = (score = -1) => {
 }
 
 export const calculateTimeAcceleration = () => {
-    let timeMult = 1;
+    let timeMult = 100;
     timeMult *= (1 + 1 / 300 * Math.log(player.maxobtainium + 1) / Math.log(10) * player.upgrades[70]) //Particle upgrade 2x5
     timeMult *= (1 + player.researches[121] / 50); // research 5x21
     timeMult *= (1 + 0.015 * player.researches[136]) // research 6x11
@@ -1181,9 +1181,6 @@ export const calculateTimeAcceleration = () => {
     timeMult *= (1 + 0.10 * (player.talismanRarity[2-1] - 1)) // Chronos Talisman bonus
     timeMult *= G['challenge15Rewards'].globalSpeed // Challenge 15 reward
     timeMult *= G['lazinessMultiplier'][player.usedCorruptions[3]]
-    if (timeMult > 100) {
-        timeMult = 10 * Math.sqrt(timeMult)
-    }
     if (timeMult < 1) {
         timeMult = Math.pow(timeMult, 1 - player.platonicUpgrades[7] / 30)
     }
